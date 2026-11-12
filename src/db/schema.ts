@@ -120,3 +120,16 @@ export const contactMessages = pgTable("contact_messages", {
   handled: boolean("handled").notNull().default(false),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+// Family members listed on the volunteer form. The old system stored first name, last name and
+// date of birth for each one, so this table does the same.
+export const volunteerFamilyMembers = pgTable("volunteer_family_members", {
+  id: serial("id").primaryKey(),
+  volunteerId: integer("volunteer_id")
+    .notNull()
+    .references(() => volunteers.id, { onDelete: "cascade" }),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  dateOfBirth: date("date_of_birth"),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
