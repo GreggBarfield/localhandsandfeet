@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+
+# next.js build
+.next/
+out/
+next-env.d.ts
+
+# secrets - never commit
+.env
+.env.*
+!.env.example
+
+# logs and OS junk
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# local tooling
+.vscode/
+*.tsbuildinfo
+coverage/
+
+# database dumps and legacy exports (may contain personal data)
+*.dbf
+*.fpt
+*.cdx
+*.sql.gz
+/legacy-export/
