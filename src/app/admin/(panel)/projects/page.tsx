@@ -2,7 +2,7 @@ import { and, desc, eq, ilike, or, sql } from "drizzle-orm";
 import Link from "next/link";
 import { db } from "@/db";
 import { projects, projectStatus } from "@/db/schema";
-import { formatDate, PageHeader, Pill, SearchBox, STATUS_LABELS, STATUS_TONES, Table, Td } from "@/components/admin/data-table";
+import { ExportButton, formatDate, PageHeader, Pill, SearchBox, STATUS_LABELS, STATUS_TONES, Table, Td } from "@/components/admin/data-table";
 
 export default async function ProjectsPage({ searchParams }: { searchParams: Promise<{ q?: string; status?: string }> }) {
   const sp = await searchParams;
@@ -40,7 +40,9 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
 
   return (
     <>
-      <PageHeader title="Projects" count={rows.length} />
+      <PageHeader title="Projects" count={rows.length}>
+        <ExportButton kind="projects" />
+      </PageHeader>
       <div className="mb-3 flex flex-wrap gap-2 text-sm">
         <a href="/admin/projects" className={`rounded-full border px-3 py-1 ${status ? "border-border bg-white" : "border-zinc-900 bg-zinc-900 text-white"}`}>
           All

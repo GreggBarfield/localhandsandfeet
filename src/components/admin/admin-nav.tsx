@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Building2, ClipboardList, LayoutDashboard, Users } from "lucide-react";
+import { Building2, ClipboardList, LayoutDashboard, Mail, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ITEMS = [
@@ -10,6 +10,7 @@ const ITEMS = [
   { href: "/admin/volunteers", label: "Volunteers", icon: Users },
   { href: "/admin/projects", label: "Projects", icon: ClipboardList },
   { href: "/admin/organizations", label: "Organizations", icon: Building2 },
+  { href: "/admin/messages", label: "Messages", icon: Mail },
 ];
 
 export function AdminNav() {

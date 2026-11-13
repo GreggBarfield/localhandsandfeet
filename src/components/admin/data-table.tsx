@@ -1,12 +1,22 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export function PageHeader({ title, count }: { title: string; count?: number }) {
+export function PageHeader({ title, count, children }: { title: string; count?: number; children?: React.ReactNode }) {
   return (
-    <div className="mb-6 flex items-baseline gap-3">
+    <div className="mb-6 flex flex-wrap items-baseline gap-3">
       <h1 className="text-3xl font-bold">{title}</h1>
       {count !== undefined && <span className="text-sm text-muted-foreground">{count} shown</span>}
+      {children && <div className="ml-auto">{children}</div>}
     </div>
+  );
+}
+
+// A plain link, not next/link, so the browser downloads the file instead of Next trying to prefetch it.
+export function ExportButton({ kind }: { kind: string }) {
+  return (
+    <a href={`/admin/export/${kind}`} className="rounded-md border border-border bg-white px-3 py-2 text-sm hover:bg-zinc-50">
+      Export CSV
+    </a>
   );
 }
 

@@ -1,7 +1,8 @@
 import { desc, eq, ilike, or } from "drizzle-orm";
 import { db } from "@/db";
 import { organizations, volunteers } from "@/db/schema";
-import { formatDate, PageHeader, SearchBox, Table, Td } from "@/components/admin/data-table";
+import Link from "next/link";
+import { ExportButton, formatDate, PageHeader, SearchBox, Table, Td } from "@/components/admin/data-table";
 
 export default async function VolunteersPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const q = ((await searchParams).q ?? "").trim();
@@ -27,13 +28,17 @@ export default async function VolunteersPage({ searchParams }: { searchParams: P
 
   return (
     <>
-      <PageHeader title="Volunteers" count={rows.length} />
+      <PageHeader title="Volunteers" count={rows.length}>
+        <ExportButton kind="volunteers" />
+      </PageHeader>
       <SearchBox q={q} placeholder="Search name, email, or organization" />
       <Table headers={["Name", "Organization", "Email", "Phone", "Signed up"]} empty={rows.length === 0}>
         {rows.map((r) => (
           <tr key={r.id}>
             <Td className="font-medium">
-              {r.firstName} {r.lastName}
+              <Link href={`/admin/volunteers/${r.id}`} className="text-blue-700 hover:underline">
+                {r.firstName} {r.lastName}
+              </Link>
             </Td>
             <Td>{r.organization ?? ""}</Td>
             <Td>{r.email}</Td>

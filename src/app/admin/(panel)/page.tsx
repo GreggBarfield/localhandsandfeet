@@ -17,7 +17,7 @@ export default async function AdminHome() {
     { label: "Volunteers", value: volunteerCount, href: "/admin/volunteers" },
     { label: "Projects", value: projectCount, href: "/admin/projects" },
     { label: "Organizations", value: organizationCount, href: "/admin/organizations" },
-    { label: "Unread messages", value: unhandledMessages },
+    { label: "Unread messages", value: unhandledMessages, href: "/admin/messages" },
   ];
 
   return (
