@@ -15,6 +15,13 @@
       "when": 1794521291707,
       "tag": "0001_misty_fantastic_four",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794591051783,
+      "tag": "0002_aspiring_silver_centurion",
+      "breakpoints": true
     }
   ]
 }

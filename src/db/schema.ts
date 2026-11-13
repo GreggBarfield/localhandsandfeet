@@ -133,3 +133,12 @@ export const volunteerFamilyMembers = pgTable("volunteer_family_members", {
   dateOfBirth: date("date_of_birth"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+// People who can sign in to /admin. Passwords are stored as scrypt hashes (see src/lib/password.ts).
+export const adminUsers = pgTable("admin_users", {
+  id: serial("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  name: text("name").notNull(),
+  passwordHash: text("password_hash").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});

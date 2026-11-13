@@ -191,18 +191,6 @@ export default function Home() {
                     <Link href="/volunteer">Volunteer Now</Link>
                   </Button>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold">Donate</h3>
-                  <p className="mb-5 mt-2 text-muted-foreground">
-                    Your donation can be a lifeline for those facing hardship, providing food, shelter, and support to
-                    those who need it most. Every gift, no matter the size, is a reflection of Christ’s love in action,
-                    bringing hope and healing to our community. Give today and be part of something bigger—changing
-                    lives through faith and generosity.
-                  </p>
-                  <Button asChild size="lg" className={ctaClass}>
-                    <Link href="/donate">Donate Now</Link>
-                  </Button>
-                </div>
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { HandHeart, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { NAV_LINKS } from "./nav-links";
 
 export function SiteHeader() {
@@ -7,7 +8,7 @@ export function SiteHeader() {
     <header className="relative z-20 border-b border-white/25 bg-zinc-900 text-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <HandHeart className="size-8 text-amber-400" aria-hidden />
+          <Image src="/images/icon-white-png-01.png" alt="" width={44} height={44} priority className="size-11" />
           <span className="leading-tight">
             <span className="block text-lg font-bold">Local Hands &amp; Feet</span>
             <span className="block text-xs text-white/60">Christian Service Projects</span>
