@@ -5,7 +5,7 @@ export function ChurchHomePanel() {
     <div>
       <h2 className="mb-3 text-2xl font-bold">Looking for a Church Home?</h2>
       <Image
-        src="/images/FMC Logo w Text.png"
+        src="/images/FMC Logo w Text.PNG"
         alt="First Methodist Church Bryan"
         width={96}
         height={96}

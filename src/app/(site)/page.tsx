@@ -115,7 +115,7 @@ export default function Home() {
                 </li>
               </ol>
               <Image
-                src="/images/FMC Logo w Text.png"
+                src="/images/FMC Logo w Text.PNG"
                 alt="First Methodist Church Bryan"
                 width={160}
                 height={160}
