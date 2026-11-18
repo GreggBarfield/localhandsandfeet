@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Ask for Help - Local Hands & Feet" }
 export default function AskForHelpPage() {
   return (
     <main>
-      <PageBanner title="Ask for Help" image="/images/contact_us_banner.jpg" />
+      <PageBanner title="Ask for Help" image="/images/ask_help_banner.jpg" />
       <section className="py-14">
         <div className="mx-auto max-w-4xl px-5 lg:px-8">
           <h2 className="mb-3 text-2xl font-bold uppercase">Ask for Help</h2>
