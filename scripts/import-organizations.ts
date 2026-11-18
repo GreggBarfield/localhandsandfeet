@@ -2,7 +2,8 @@ import { readFileSync } from "node:fs";
 import { Pool } from "pg";
 
 // One-time import of the organizations from the old FoxPro site (organizations.dbf, exported to
-// scripts/data/organizations.json). Safe to run more than once: a name that already exists is skipped.
+// scripts/data/organizations.json). They are dated 2025-09-11 (when the old table was last saved) so the
+// Add Organization flood limit, which counts rows from the last hour, does not see them as new. Safe to run more than once: a name that already exists is skipped.
 type Row = {
   name: string;
   type: string;
@@ -26,8 +27,8 @@ async function main() {
         continue;
       }
       await pool.query(
-        `insert into organizations (name, type, contact_first_name, contact_last_name, contact_email, contact_phone, active)
-         values ($1, $2::organization_type, $3, $4, $5, $6, true)`,
+        `insert into organizations (name, type, contact_first_name, contact_last_name, contact_email, contact_phone, active, created_at)
+         values ($1, $2::organization_type, $3, $4, $5, $6, true, '2025-09-11')`,
         [r.name, r.type, r.contactFirstName, r.contactLastName, r.contactEmail, r.contactPhone],
       );
       added++;
