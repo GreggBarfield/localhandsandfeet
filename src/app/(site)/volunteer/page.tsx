@@ -34,7 +34,7 @@ export default async function VolunteerPage({
   const initialOrg = orgs.some((o) => String(o.id) === org) ? (org as string) : "";
   return (
     <main>
-      <PageBanner title="Volunteer" image="/images/contact_us_banner.jpg" />
+      <PageBanner title="Volunteer" image="/images/wheelbarrows_dark.jpg" />
       <section className="py-14">
         <div className="mx-auto max-w-4xl px-5 lg:px-8">
           <h2 className="mb-3 text-2xl font-bold uppercase">Volunteer</h2>
