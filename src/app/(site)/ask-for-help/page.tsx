@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
+import { getFormProtection } from "@/lib/form-guard";
 import { PageBanner } from "@/components/site/page-banner";
 import { AskForm } from "./ask-form";
 
 export const metadata: Metadata = { title: "Ask for Help - Local Hands & Feet" };
 
-export default function AskForHelpPage() {
+export default async function AskForHelpPage() {
+  // Runs on every request so the form token is stamped with the real page-load time.
+  await connection();
+  const protection = getFormProtection();
   return (
     <main>
       <PageBanner title="Ask for Help" image="/images/ask_help_banner.jpg" />
@@ -19,7 +24,7 @@ export default function AskForHelpPage() {
           <div className="rounded-xl border bg-card shadow-sm">
             <div className="border-b px-6 py-3 font-semibold">Ask for help on behalf of yourself or someone else.</div>
             <div className="p-6">
-              <AskForm />
+              <AskForm {...protection} />
             </div>
           </div>
         </div>

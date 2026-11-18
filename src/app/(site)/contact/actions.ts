@@ -1,7 +1,10 @@
 "use server";
 
+import { and, count, eq, gte } from "drizzle-orm";
 import { db } from "@/db";
 import { contactMessages } from "@/db/schema";
+import { checkHuman, countLinks, LINKS_MESSAGE, TOO_MANY } from "@/lib/form-guard";
+import { sendMail } from "@/lib/mail";
 import { contactSchema } from "@/lib/validation/contact";
 
 export type ContactValues = {
@@ -44,6 +47,37 @@ export async function submitContact(_prev: ContactFormState, fd: FormData): Prom
   }
   const d = parsed.data;
 
+  if (countLinks(d.message) > 2) {
+    return {
+      status: "error",
+      message: "Please fix the items marked below.",
+      fieldErrors: { message: LINKS_MESSAGE },
+      values,
+    };
+  }
+
+  const notHuman = await checkHuman(fd);
+  if (notHuman) return { status: "error", message: notHuman, values };
+
+  // Flood limits, counted from the saved messages: 30 an hour for the whole form, 3 an hour per email address.
+  try {
+    const since = new Date(Date.now() - 60 * 60 * 1000);
+    const [all] = await db.select({ n: count() }).from(contactMessages).where(gte(contactMessages.createdAt, since));
+    const [mine] = await db
+      .select({ n: count() })
+      .from(contactMessages)
+      .where(and(gte(contactMessages.createdAt, since), eq(contactMessages.email, d.email)));
+    if (all.n >= 30 || mine.n >= 3) {
+      return {
+        status: "error",
+        message: TOO_MANY,
+        values,
+      };
+    }
+  } catch (err) {
+    console.error("submitContact limit check failed", err);
+  }
+
   try {
     await db.insert(contactMessages).values({
       firstName: d.firstName,
@@ -61,6 +95,18 @@ export async function submitContact(_prev: ContactFormState, fd: FormData): Prom
     };
   }
 
-  // TODO (phase 3): send the "Incoming Message from Hands & Feet Website" email through SES, and add the Turnstile check above.
+  // The message is saved, so a mail problem only gets logged. The person still sees success.
+  await sendMail({
+    subject: "Incoming Message from Hands & Feet Website",
+    replyTo: d.email,
+    text: [
+      `Name: ${d.firstName} ${d.lastName}`,
+      `Email: ${d.email}`,
+      `Phone: ${d.phone || "(none given)"}`,
+      "",
+      d.message,
+    ].join("\n"),
+  });
+
   return { status: "success" };
 }

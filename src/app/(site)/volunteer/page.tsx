@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { asc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { organizations } from "@/db/schema";
+import { getFormProtection } from "@/lib/form-guard";
 import { PageBanner } from "@/components/site/page-banner";
 import { VolunteerForm } from "./volunteer-form";
 
@@ -30,6 +31,7 @@ export default async function VolunteerPage({
 }) {
   const { org } = await searchParams;
   const orgs = await getOrganizations();
+  const protection = getFormProtection();
   // Coming back from "Add Organization": pick that organization if it is in the list.
   const initialOrg = orgs.some((o) => String(o.id) === org) ? (org as string) : "";
   return (
@@ -45,7 +47,7 @@ export default async function VolunteerPage({
           <div className="rounded-xl border bg-card shadow-sm">
             <div className="border-b px-6 py-3 font-semibold">Volunteer Form</div>
             <div className="p-6">
-              <VolunteerForm organizations={orgs} initialOrganizationId={initialOrg} />
+              <VolunteerForm organizations={orgs} initialOrganizationId={initialOrg} {...protection} />
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { FormProtection } from "@/components/site/form-protection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,7 +10,7 @@ import { submitOrganization, type OrgFormState } from "./actions";
 
 const initial: OrgFormState = { status: "idle" };
 
-export function OrgForm() {
+export function OrgForm({ formToken, turnstileSiteKey }: { formToken: string; turnstileSiteKey: string }) {
   const [state, formAction, pending] = useActionState(submitOrganization, initial);
   const v = state.values;
   const err = state.fieldErrors ?? {};
@@ -63,6 +64,8 @@ export function OrgForm() {
           </select>
         </Field>
       </div>
+
+      <FormProtection formToken={formToken} turnstileSiteKey={turnstileSiteKey} answer={state} />
 
       <Button type="submit" size="lg" disabled={pending}>
         {pending ? "Saving..." : "Submit"}

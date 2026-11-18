@@ -1,9 +1,10 @@
 "use server";
 
-import { and, eq, sql } from "drizzle-orm";
+import { and, count, eq, gte, sql } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { db } from "@/db";
 import { organizations } from "@/db/schema";
+import { checkHuman, TOO_MANY } from "@/lib/form-guard";
 import { organizationSchema } from "@/lib/validation/organization";
 
 export type OrgValues = {
@@ -47,6 +48,18 @@ export async function submitOrganization(_prev: OrgFormState, fd: FormData): Pro
     return { status: "error", message: "Please fix the items marked below.", fieldErrors, values };
   }
   const d = parsed.data;
+
+  const notHuman = await checkHuman(fd);
+  if (notHuman) return { status: "error", message: notHuman, values };
+
+  // Flood limit, counted from saved organizations: 10 new ones an hour for the whole form.
+  try {
+    const since = new Date(Date.now() - 60 * 60 * 1000);
+    const [all] = await db.select({ n: count() }).from(organizations).where(gte(organizations.createdAt, since));
+    if (all.n >= 10) return { status: "error", message: TOO_MANY, values };
+  } catch (err) {
+    console.error("submitOrganization limit check failed", err);
+  }
 
   let orgId: number;
   try {

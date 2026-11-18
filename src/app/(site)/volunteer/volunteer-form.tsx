@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useActionState, useState } from "react";
 import { ChurchHomePanel } from "@/components/site/church-home-panel";
+import { FormProtection } from "@/components/site/form-protection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,9 +19,13 @@ const initial: VolunteerFormState = { status: "idle" };
 export function VolunteerForm({
   organizations,
   initialOrganizationId = "",
+  formToken,
+  turnstileSiteKey,
 }: {
   organizations: Org[];
   initialOrganizationId?: string;
+  formToken: string;
+  turnstileSiteKey: string;
 }) {
   const [state, formAction, pending] = useActionState(submitVolunteer, initial);
   const v = state.values;
@@ -156,6 +161,8 @@ export function VolunteerForm({
           <p className="mt-1 text-xs text-muted-foreground">Enter 0 if none of them are under 18.</p>
         </div>
       )}
+
+      <FormProtection formToken={formToken} turnstileSiteKey={turnstileSiteKey} answer={state} />
 
       <Button type="submit" size="lg" disabled={pending}>
         {pending ? "Sending..." : "Submit"}

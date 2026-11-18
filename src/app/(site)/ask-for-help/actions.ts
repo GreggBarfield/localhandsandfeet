@@ -1,7 +1,10 @@
 "use server";
 
+import { and, count, eq, gte } from "drizzle-orm";
 import { db } from "@/db";
 import { projects } from "@/db/schema";
+import { sendMail, questionsAndAnswers } from "@/lib/mail";
+import { checkHuman, countLinks, LINKS_MESSAGE, TOO_MANY } from "@/lib/form-guard";
 import { askForHelpSchema } from "@/lib/validation/ask-for-help";
 
 export type AskValues = {
@@ -59,6 +62,31 @@ export async function submitAskForHelp(_prev: AskFormState, fd: FormData): Promi
   }
   const d = parsed.data;
 
+  if (countLinks(d.description) > 2) {
+    return {
+      status: "error",
+      message: "Please fix the items marked below.",
+      fieldErrors: { description: LINKS_MESSAGE },
+      values,
+    };
+  }
+
+  const notHuman = await checkHuman(fd);
+  if (notHuman) return { status: "error", message: notHuman, values };
+
+  // Flood limits, counted from saved requests: 20 an hour for the whole form, 3 an hour per requester email.
+  try {
+    const since = new Date(Date.now() - 60 * 60 * 1000);
+    const [all] = await db.select({ n: count() }).from(projects).where(gte(projects.createdAt, since));
+    const [mine] = await db
+      .select({ n: count() })
+      .from(projects)
+      .where(and(gte(projects.createdAt, since), eq(projects.requesterEmail, d.requesterEmail)));
+    if (all.n >= 20 || mine.n >= 3) return { status: "error", message: TOO_MANY, values };
+  } catch (err) {
+    console.error("submitAskForHelp limit check failed", err);
+  }
+
   try {
     const today = new Date().toISOString().slice(0, 10);
     await db.insert(projects).values({
@@ -87,6 +115,30 @@ export async function submitAskForHelp(_prev: AskFormState, fd: FormData): Promi
     };
   }
 
-  // TODO (phase 3): send the "New Project from Hands & Feet Website" email through SES, and add the Turnstile check above.
+  // The request is saved, so a mail problem only gets logged. The person still sees success.
+  await sendMail({
+    subject: "New Project from Hands & Feet Website",
+    replyTo: d.requesterEmail || undefined,
+    text:
+      "A new request for help was submitted on the website.\n\nRECIPIENT\n\n" +
+      questionsAndAnswers([
+        ["Recipient First Name", d.recipientFirstName],
+        ["Recipient Last Name", d.recipientLastName],
+        ["Recipient Address", d.recipientAddress],
+        ["Recipient City, State, and Zip", d.recipientCityStateZip],
+        ["Email Address", d.recipientEmail],
+        ["Phone Number", d.recipientPhone],
+      ]) +
+      "\n\nYOUR INFORMATION\n\n" +
+      questionsAndAnswers([
+        ["Same as Above", d.requesterSameAsRecipient ? "Yes" : "No"],
+        ["Your First Name", d.requesterFirstName],
+        ["Your Last Name", d.requesterLastName],
+        ["Email Address", d.requesterEmail],
+        ["Phone Number", d.requesterPhone],
+        ["Describe Project", d.description],
+      ]),
+  });
+
   return { status: "success", firstName: d.requesterFirstName };
 }

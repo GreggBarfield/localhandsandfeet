@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
+import { getFormProtection } from "@/lib/form-guard";
 import { PageBanner } from "@/components/site/page-banner";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = { title: "Contact Us - Local Hands & Feet" };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  // Runs on every request so the form token is stamped with the real page-load time.
+  await connection();
+  const protection = getFormProtection();
   return (
     <main>
       <PageBanner title="Contact" image="/images/contact_us_banner.jpg" />
@@ -18,7 +23,7 @@ export default function ContactPage() {
           <div className="rounded-xl border bg-card shadow-sm">
             <div className="border-b px-6 py-3 font-semibold">Please complete this form to contact us.</div>
             <div className="p-6">
-              <ContactForm />
+              <ContactForm {...protection} />
             </div>
           </div>
         </div>

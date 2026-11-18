@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useActionState, useRef, useState } from "react";
 import { ChurchHomePanel } from "@/components/site/church-home-panel";
+import { FormProtection } from "@/components/site/form-protection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,7 +11,7 @@ import { submitAskForHelp, type AskFormState } from "./actions";
 
 const initial: AskFormState = { status: "idle" };
 
-export function AskForm() {
+export function AskForm({ formToken, turnstileSiteKey }: { formToken: string; turnstileSiteKey: string }) {
   const [state, formAction, pending] = useActionState(submitAskForHelp, initial);
   const v = state.values;
   const err = state.fieldErrors ?? {};
@@ -112,6 +113,8 @@ export function AskForm() {
           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
         />
       </Field>
+
+      <FormProtection formToken={formToken} turnstileSiteKey={turnstileSiteKey} answer={state} />
 
       <Button type="submit" size="lg" disabled={pending}>
         {pending ? "Sending..." : "Submit"}
