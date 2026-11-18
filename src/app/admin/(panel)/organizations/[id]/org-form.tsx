@@ -42,10 +42,10 @@ export function OrgForm({ organizationId, types, values }: { organizationId: num
 
       <Section title="Contact person">
         <div className="grid gap-4 md:grid-cols-2">
-          <Field label="First name" name="contactFirstName" defaultValue={values.contactFirstName} required />
-          <Field label="Last name" name="contactLastName" defaultValue={values.contactLastName} required />
-          <Field label="Email" name="contactEmail" type="email" defaultValue={values.contactEmail} required />
-          <Field label="Phone" name="contactPhone" defaultValue={values.contactPhone} required />
+          <Field label="First name" name="contactFirstName" defaultValue={values.contactFirstName} />
+          <Field label="Last name" name="contactLastName" defaultValue={values.contactLastName} />
+          <Field label="Email" name="contactEmail" type="email" defaultValue={values.contactEmail} />
+          <Field label="Phone" name="contactPhone" defaultValue={values.contactPhone} />
         </div>
       </Section>
 

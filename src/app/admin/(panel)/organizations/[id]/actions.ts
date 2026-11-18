@@ -14,10 +14,11 @@ const text = (label: string) => z.string().trim().min(1, `${label} is required`)
 const schema = z.object({
   name: text("Organization name"),
   type: z.enum(organizationType.enumValues),
-  contactFirstName: text("Contact first name"),
-  contactLastName: text("Contact last name"),
-  contactEmail: z.string().trim().toLowerCase().pipe(z.email("Enter a valid contact email")),
-  contactPhone: text("Contact phone"),
+  // Organizations imported from the old site have no contact person, so these may be blank.
+  contactFirstName: z.string().trim(),
+  contactLastName: z.string().trim(),
+  contactEmail: z.string().trim().toLowerCase().refine((v) => v === "" || z.email().safeParse(v).success, "Enter a valid contact email"),
+  contactPhone: z.string().trim(),
   active: z.boolean(),
 });
 

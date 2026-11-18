@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState, useState } from "react";
+import { useActionState, useCallback, useState } from "react";
 import { ChurchHomePanel } from "@/components/site/church-home-panel";
 import { FormProtection } from "@/components/site/form-protection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { AddOrganizationDialog } from "./add-organization-dialog";
 import { submitVolunteer, type VolunteerFormState } from "./actions";
 
 type Org = { id: number; name: string };
@@ -17,7 +18,7 @@ const selectClass =
 const initial: VolunteerFormState = { status: "idle" };
 
 export function VolunteerForm({
-  organizations,
+  organizations: initialOrganizations,
   initialOrganizationId = "",
   formToken,
   turnstileSiteKey,
@@ -34,9 +35,24 @@ export function VolunteerForm({
   const [inOrg, setInOrg] = useState(v?.inOrganization ?? (initialOrganizationId ? "Y" : ""));
   const [wantsFamily, setWantsFamily] = useState(v?.wantsFamilyListed ?? false);
 
+  // The organization list can grow while the form is open (popup below), so it lives in state.
+  const [organizations, setOrganizations] = useState(initialOrganizations);
+  const [orgId, setOrgId] = useState(v?.organizationId ?? initialOrganizationId);
+  const [orgDialogOpen, setOrgDialogOpen] = useState(false);
+
+  const handleOrgAdded = useCallback((org: Org) => {
+    setOrganizations((list) =>
+      list.some((o) => o.id === org.id) ? list : [...list, org].sort((a, b) => a.name.localeCompare(b.name)),
+    );
+    setOrgId(String(org.id));
+    setInOrg("Y");
+    setOrgDialogOpen(false);
+  }, []);
+
   if (state.status === "success") return <ThankYou firstName={state.firstName ?? ""} />;
 
   return (
+    <>
     <form action={formAction} className="space-y-6" noValidate={false}>
       {state.status === "error" && state.message && (
         <p role="alert" className="rounded-md border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive">
@@ -96,7 +112,19 @@ export function VolunteerForm({
             <>
               Organization{" "}
               <span className="ml-2 text-xs font-normal">
-                (<Link href="/organizations/new" className="underline">Don&apos;t see yours? Add it here.</Link>)
+                (
+                <Link
+                  href="/organizations/new"
+                  className="underline"
+                  onClick={(e) => {
+                    // With JavaScript on, open the popup. Without it, the link still goes to the Add Organization page.
+                    e.preventDefault();
+                    setOrgDialogOpen(true);
+                  }}
+                >
+                  Don&apos;t see yours? Add it here.
+                </Link>
+                )
               </span>
             </>
           }
@@ -106,7 +134,8 @@ export function VolunteerForm({
             name="organization_name"
             disabled={inOrg !== "Y"}
             required={inOrg === "Y"}
-            defaultValue={v?.organizationId ?? initialOrganizationId}
+            value={orgId}
+            onChange={(e) => setOrgId(e.target.value)}
             className={selectClass}
           >
             <option value="">Select</option>
@@ -168,6 +197,15 @@ export function VolunteerForm({
         {pending ? "Sending..." : "Submit"}
       </Button>
     </form>
+
+    <AddOrganizationDialog
+      open={orgDialogOpen}
+      onClose={() => setOrgDialogOpen(false)}
+      onAdded={handleOrgAdded}
+      formToken={formToken}
+      turnstileSiteKey={turnstileSiteKey}
+    />
+    </>
   );
 }
 

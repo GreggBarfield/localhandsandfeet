@@ -1,0 +1,810 @@
+[
+  {
+    "name": "A&M United Methodist Church's College Ministry",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "college@am-umc.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "Adventist Christian Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamu.acf@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Aggie Sisters for Christ",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "aggiesistersforchrist@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "AggieCatholic",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "aggiecatholicoutreach@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Aggies for Christ On Campus",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "brian@amchurch.net",
+    "contactPhone": ""
+  },
+  {
+    "name": "All Nations Mission Campus Christian Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "ijlee@tamu.edu",
+    "contactPhone": ""
+  },
+  {
+    "name": "Alpha Omega",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "alphaomegatamu@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Anglican Aggies",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "anglicanaggies@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Asian American InterVarsity",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamuaaiv@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Baptist Student Ministry",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "contact@aggiebsm.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "Beta Upsilon Chi (Brothers Under Christ)",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "president@tamubyx.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "Breakaway Volunteers",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "Howdy@breakaway.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "Bridges International",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Brotherhood of Christian Aggies",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "bcapresident1@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Catholic Aggies in Business",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "cabtamu1@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Christian Business Leaders",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "cblstafftamu@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Christian Engineering Leaders",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "cel.codirectors@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Christian Grads Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "fcg.tamu@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Christian Healthcare Leaders",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "chltamu12@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Christian Women in Medicine",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "cwmexecutives@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Christians at Texas A&M",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "christiansattamu@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Christians United For Israel on campus",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "cufioncampustamu@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Christland College Ministry",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Deeper Life Campus Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Delight Ministries",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "delight.tamu@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Episcopal Student Association",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "episcoags@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "FC College Ministry",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "malloryelizabeth21@tamu.edu",
+    "contactPhone": ""
+  },
+  {
+    "name": "Freedom Ministries",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "edotter@centralbcs.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "Freshmen Leaders In Christ",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "flicdirectors@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Global Medical Missions Alliance",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "gmmatamu@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Intervarsity Christian Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "info@aggieiv.tamu.edu",
+    "contactPhone": ""
+  },
+  {
+    "name": "Kappa Phi Beta Christian Sisterhood",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "aggie.kappaphiclub@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Kappa Theta Beta",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamuktb@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Kappa Upsilon Chi",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamukyx@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Lutheran Student Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "UniversityLutheranCS@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Orthodox Christian Campus Ministries",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamu@susoccm.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "Orthodox Christian Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamu@ocf.net",
+    "contactPhone": ""
+  },
+  {
+    "name": "Philadelphia Sisters",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "phillies.tamu@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Ratio Christi",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "TAMU@ratiochristi.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "Reformed University Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "austin.mccann@ruf.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "Sigma Phi Lambda",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "aggiephilambofficers@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Surrendered Apostolics Living Truth",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamusalt@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "TAMU Campus Crusade for Christ",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "aggiecru@cru.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "TAMU Navigators",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "aggienavs@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "TAMUG Catholic Sea Aggies",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "elise.philomena@tamu.edu",
+    "contactPhone": ""
+  },
+  {
+    "name": "TAMUG Central College Ministries",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "TAMUG Coastal College",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Texas A&M Revelation Outdoors",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamurevoutdoors@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "The Impact Movement",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamuimpactmv@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Thomistic Institute at Texas A&M",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "aggiethomist@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Thrive",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamuthriveiv@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Valor",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "bryce.thomasson@cru.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "Wesley Foundation",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamuwesley@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Young Life Leadership Training",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamu.younglife@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Antioch College Ministry",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "college-ministry@antiochcs.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "Epic Movement",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "InterVarsity Graduate and Faculty Ministries",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamuintervarsitygfm@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "LoveWorld Texas A&M University",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "loveworldtamu@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Nurses Christian Fellowship - Round Rock",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "ReJOYce In Jesus Campus Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamu@rjcf.org",
+    "contactPhone": ""
+  },
+  {
+    "name": "TAMU ARTISTS",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "tamuartists@gmail.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Treehouse (Aggie Lutherans)",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "ministry@treehouseministries.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "True Life Change",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Chi Alpha World Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "info@xacollegestation.com",
+    "contactPhone": ""
+  },
+  {
+    "name": "Aggie Christian Teachers",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Aggies for Truth",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Alpha Epsilon Pi",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Association of Baptist Students",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Calvary on Campus",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Catholic Medical Student Association",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Chara Christian Dance Company",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Christian Architecture Leaders",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Community of Blessing",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "CURE International",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Destino",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Disciples of Truth",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Doulos",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "First College",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "International Christian Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "International Justice Mission",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Kanakuk Ags",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Life Savers",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "McAllen Aggie Baptist Student Ministry (BSM)",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Men Of God Christian Fraternity Incorporated",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "One Hope",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Phi Beta Chi",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Project Reach Ministries",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "REACH",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Refresh",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Student Mobilization",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "TAMU Campus Chinese Christian Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "TAMUG Christians at TAMUG",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "TAMUG Galveston Bible Church",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "The Big Read",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "The Pursuit Ministries",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "The Rock: The WELS Campus Ministry at Texas A&M",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "The Student Apologetics Fellowship",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "True Diamonds",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "Two42 College Ministry",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "United Campus Ministry in Aggieland",
+    "type": "college_campus",
+    "contactFirstName": "",
+    "contactLastName": "",
+    "contactEmail": "",
+    "contactPhone": ""
+  },
+  {
+    "name": "First Methodist Church - Bryan",
+    "type": "church",
+    "contactFirstName": "Gregg",
+    "contactLastName": "Barfield",
+    "contactEmail": "gregg.barfield@ledgerspace.net",
+    "contactPhone": "9792193451"
+  }
+]
