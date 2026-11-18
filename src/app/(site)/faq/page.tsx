@@ -64,8 +64,7 @@ const faqs: { question: string; answer: React.ReactNode }[] = [
         </p>
         <p>
           When signing up, you&apos;ll find an option on the volunteer form that says, &quot;I want to add family
-          members.&quot; Clicking this box will allow you to register your family members, including children, so that
-          we can plan accordingly.
+          members.&quot; Check that box and tell us how many of them are under 18, so that we can plan accordingly.
         </p>
       </>
     ),

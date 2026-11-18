@@ -53,6 +53,8 @@ export const volunteers = pgTable("volunteers", {
   notes: text("notes"),
   adminNotes: text("admin_notes"),
   wantsFamilyListed: boolean("wants_family_listed").notNull().default(false),
+  // How many family members signing up with them are under 18. Null = never asked (older sign-ups).
+  familyMinorsCount: integer("family_minors_count"),
   seekingChurchHome: boolean("seeking_church_home").notNull().default(false),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });

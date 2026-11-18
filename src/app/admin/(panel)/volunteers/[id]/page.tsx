@@ -53,6 +53,7 @@ export default async function VolunteerPage({ params }: { params: Promise<{ id: 
             notes: volunteer.notes,
             adminNotes: volunteer.adminNotes,
             wantsFamilyListed: volunteer.wantsFamilyListed,
+            familyMinorsCount: volunteer.familyMinorsCount,
             seekingChurchHome: volunteer.seekingChurchHome,
           }}
           organizations={orgs}

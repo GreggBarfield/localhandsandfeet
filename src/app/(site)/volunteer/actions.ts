@@ -2,10 +2,8 @@
 
 import { eq } from "drizzle-orm";
 import { db } from "@/db";
-import { volunteerFamilyMembers, volunteers } from "@/db/schema";
+import { volunteers } from "@/db/schema";
 import { volunteerSchema } from "@/lib/validation/volunteer";
-
-export type FamilyValues = { firstName: string; lastName: string; dateOfBirth: string };
 
 export type FormValues = {
   firstName: string;
@@ -18,7 +16,7 @@ export type FormValues = {
   notes: string;
   wantsFamilyListed: boolean;
   seekingChurchHome: boolean;
-  family: FamilyValues[];
+  familyMinorsCount: string;
 };
 
 export type VolunteerFormState = {
@@ -39,16 +37,6 @@ export async function submitVolunteer(
   if (str(fd, "website") !== "") return { status: "success", firstName: "friend" };
 
   const wantsFamilyListed = fd.get("includeFamily") === "on";
-  const firsts = fd.getAll("family_first").map(String);
-  const lasts = fd.getAll("family_last").map(String);
-  const dobs = fd.getAll("family_dob").map(String);
-  const family: FamilyValues[] = firsts
-    .map((_, i) => ({
-      firstName: (firsts[i] ?? "").trim(),
-      lastName: (lasts[i] ?? "").trim(),
-      dateOfBirth: (dobs[i] ?? "").trim(),
-    }))
-    .filter((m) => m.firstName || m.lastName || m.dateOfBirth);
 
   const values: FormValues = {
     firstName: str(fd, "vol_fname"),
@@ -61,7 +49,7 @@ export async function submitVolunteer(
     notes: str(fd, "volunteer_proj_notes"),
     wantsFamilyListed,
     seekingChurchHome: fd.get("church_home") === "Y",
-    family: wantsFamilyListed ? family : [],
+    familyMinorsCount: wantsFamilyListed ? str(fd, "family_minors") : "",
   };
 
   const parsed = volunteerSchema.safeParse(values);
@@ -74,6 +62,7 @@ export async function submitVolunteer(
     return { status: "error", message: "Please fix the items marked below.", fieldErrors, values };
   }
   const d = parsed.data;
+  const minors = d.wantsFamilyListed ? Number(d.familyMinorsCount) : null;
 
   try {
     await db.transaction(async (tx) => {
@@ -88,7 +77,8 @@ export async function submitVolunteer(
         // Same email signed up before. Leave their record alone and log the new sign-up for the admins.
         volunteerId = existing[0].id;
         const stamp = new Date().toISOString().slice(0, 10);
-        const line = `[${stamp}] Signed up again on the website.${d.notes ? ` Notes: ${d.notes}` : ""}`;
+        const familyBit = minors === null ? "" : ` Signing up with family, ${minors} under 18.`;
+        const line = `[${stamp}] Signed up again on the website.${familyBit}${d.notes ? ` Notes: ${d.notes}` : ""}`;
         await tx
           .update(volunteers)
           .set({ adminNotes: existing[0].adminNotes ? `${existing[0].adminNotes}\n${line}` : line })
@@ -105,21 +95,11 @@ export async function submitVolunteer(
             organizationId: d.inOrganization === "Y" ? Number(d.organizationId) : null,
             notes: d.notes || null,
             wantsFamilyListed: d.wantsFamilyListed,
+            familyMinorsCount: minors,
             seekingChurchHome: d.seekingChurchHome,
           })
           .returning({ id: volunteers.id });
         volunteerId = row.id;
-      }
-
-      if (d.family.length > 0) {
-        await tx.insert(volunteerFamilyMembers).values(
-          d.family.map((m) => ({
-            volunteerId,
-            firstName: m.firstName,
-            lastName: m.lastName,
-            dateOfBirth: m.dateOfBirth,
-          })),
-        );
       }
     });
   } catch (err) {

@@ -1,16 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState, useRef, useState } from "react";
-import { Plus, X } from "lucide-react";
+import { useActionState, useState } from "react";
 import { ChurchHomePanel } from "@/components/site/church-home-panel";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { submitVolunteer, type FamilyValues, type VolunteerFormState } from "./actions";
+import { submitVolunteer, type VolunteerFormState } from "./actions";
 
 type Org = { id: number; name: string };
-type FamilyRow = FamilyValues & { key: number };
 
 const selectClass =
   "h-10 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50";
@@ -28,17 +26,10 @@ export function VolunteerForm({
   const v = state.values;
   const err = state.fieldErrors ?? {};
 
-  const nextKey = useRef(1);
   const [inOrg, setInOrg] = useState(v?.inOrganization ?? (initialOrganizationId ? "Y" : ""));
   const [wantsFamily, setWantsFamily] = useState(v?.wantsFamilyListed ?? false);
-  const [family, setFamily] = useState<FamilyRow[]>(
-    (v?.family ?? []).map((m) => ({ ...m, key: nextKey.current++ })),
-  );
 
   if (state.status === "success") return <ThankYou firstName={state.firstName ?? ""} />;
-
-  const addMember = () =>
-    setFamily((rows) => [...rows, { key: nextKey.current++, firstName: "", lastName: "", dateOfBirth: "" }]);
 
   return (
     <form action={formAction} className="space-y-6" noValidate={false}>
@@ -138,10 +129,7 @@ export function VolunteerForm({
             type="checkbox"
             name="includeFamily"
             checked={wantsFamily}
-            onChange={(e) => {
-              setWantsFamily(e.target.checked);
-              if (e.target.checked && family.length === 0) addMember();
-            }}
+            onChange={(e) => setWantsFamily(e.target.checked)}
             className="size-4"
           />
           I want to add family members.
@@ -153,33 +141,19 @@ export function VolunteerForm({
       </div>
 
       {wantsFamily && (
-        <div className="space-y-3 rounded-lg border bg-muted/40 p-4">
-          {family.map((m, i) => (
-            <div key={m.key} className="grid items-end gap-3 md:grid-cols-[1fr_1fr_11rem_auto]">
-              <Field label="First Name" error={err[`family.${i}.firstName`]}>
-                <Input name="family_first" defaultValue={m.firstName} />
-              </Field>
-              <Field label="Last Name" error={err[`family.${i}.lastName`]}>
-                <Input name="family_last" defaultValue={m.lastName} />
-              </Field>
-              <Field label="Date of Birth" error={err[`family.${i}.dateOfBirth`]}>
-                <Input name="family_dob" type="date" defaultValue={m.dateOfBirth} />
-              </Field>
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon"
-                aria-label="Remove family member"
-                onClick={() => setFamily((rows) => rows.filter((r) => r.key !== m.key))}
-              >
-                <X />
-              </Button>
-            </div>
-          ))}
-          {err.family && <p className="text-sm text-destructive">{err.family}</p>}
-          <Button type="button" variant="outline" size="sm" onClick={addMember}>
-            <Plus /> Add Family Member
-          </Button>
+        <div className="max-w-sm">
+          <Field label="How many of them are under 18?" error={err.familyMinorsCount}>
+            <Input
+              name="family_minors"
+              type="number"
+              inputMode="numeric"
+              min={0}
+              max={50}
+              required
+              defaultValue={v?.familyMinorsCount ?? ""}
+            />
+          </Field>
+          <p className="mt-1 text-xs text-muted-foreground">Enter 0 if none of them are under 18.</p>
         </div>
       )}
 

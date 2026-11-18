@@ -22,6 +22,13 @@
       "when": 1794591051783,
       "tag": "0002_aspiring_silver_centurion",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794677451783,
+      "tag": "0003_family_minors_count",
+      "breakpoints": true
     }
   ]
 }

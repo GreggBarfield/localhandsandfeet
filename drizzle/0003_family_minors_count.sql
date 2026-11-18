@@ -1,0 +1,1 @@
+ALTER TABLE "volunteers" ADD COLUMN "family_minors_count" integer;

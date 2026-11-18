@@ -24,8 +24,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
       .leftJoin(organizations, eq(volunteers.organizationId, organizations.id))
       .orderBy(asc(volunteers.lastName), asc(volunteers.firstName));
     csv = toCsv(
-      ["First name", "Last name", "Email", "Phone", "Date of birth", "18 or older", "Organization", "Wants family listed", "Seeking church home", "Family members", "Volunteer comments", "Admin notes", "Signed up"],
-      rows.map(({ v, organization, family }) => [v.firstName, v.lastName, v.email, v.phone, v.dateOfBirth, v.isEighteenOrOlder ? "Yes" : "No", organization, v.wantsFamilyListed ? "Yes" : "No", v.seekingChurchHome ? "Yes" : "No", family, v.notes, v.adminNotes, v.createdAt]),
+      ["First name", "Last name", "Email", "Phone", "Date of birth", "18 or older", "Organization", "Wants family listed", "Family under 18", "Seeking church home", "Family members", "Volunteer comments", "Admin notes", "Signed up"],
+      rows.map(({ v, organization, family }) => [v.firstName, v.lastName, v.email, v.phone, v.dateOfBirth, v.isEighteenOrOlder ? "Yes" : "No", organization, v.wantsFamilyListed ? "Yes" : "No", v.familyMinorsCount, v.seekingChurchHome ? "Yes" : "No", family, v.notes, v.adminNotes, v.createdAt]),
     );
   } else if (kind === "projects") {
     const rows = await db

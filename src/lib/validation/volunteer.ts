@@ -2,14 +2,6 @@ import { z } from "zod";
 
 const text = (max: number) => z.string().trim().max(max, `Keep this under ${max} characters`);
 
-export const familyMemberSchema = z.object({
-  firstName: text(80).min(1, "First name is required"),
-  lastName: text(80).min(1, "Last name is required"),
-  dateOfBirth: z
-    .union([z.literal(""), z.iso.date("Enter a valid date")])
-    .transform((v) => (v === "" ? null : v)),
-});
-
 export const volunteerSchema = z
   .object({
     firstName: text(80).min(1, "First name is required"),
@@ -22,11 +14,21 @@ export const volunteerSchema = z
     notes: text(2000),
     wantsFamilyListed: z.boolean(),
     seekingChurchHome: z.boolean(),
-    family: z.array(familyMemberSchema).max(20, "Please list up to 20 family members"),
+    familyMinorsCount: z.string().trim(),
   })
   .superRefine((d, ctx) => {
     if (d.inOrganization === "Y" && !/^\d+$/.test(d.organizationId)) {
       ctx.addIssue({ code: "custom", path: ["organizationId"], message: "Choose your organization" });
+    }
+    if (d.wantsFamilyListed) {
+      const n = Number(d.familyMinorsCount);
+      if (d.familyMinorsCount === "" || !Number.isInteger(n) || n < 0 || n > 50) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["familyMinorsCount"],
+          message: "Enter a number from 0 to 50 (use 0 if none are under 18)",
+        });
+      }
     }
   });
 

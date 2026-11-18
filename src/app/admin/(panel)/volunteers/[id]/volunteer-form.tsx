@@ -16,6 +16,7 @@ export type VolunteerFormValues = {
   notes: string | null;
   adminNotes: string | null;
   wantsFamilyListed: boolean;
+  familyMinorsCount: number | null;
   seekingChurchHome: boolean;
 };
 
@@ -39,6 +40,7 @@ export function VolunteerForm({ volunteerId, values, organizations }: { voluntee
           <Field label="Email" name="email" type="email" defaultValue={values.email} required />
           <Field label="Phone" name="phone" defaultValue={values.phone} />
           <Field label="Date of birth" name="dateOfBirth" type="date" defaultValue={values.dateOfBirth} />
+          <Field label="Family members under 18" name="familyMinorsCount" type="number" defaultValue={values.familyMinorsCount === null ? "" : String(values.familyMinorsCount)} />
           <div className="grid gap-1.5">
             <Label htmlFor="organizationId">Organization</Label>
             <select id="organizationId" name="organizationId" defaultValue={values.organizationId ?? ""} className={selectClass}>

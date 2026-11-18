@@ -33,6 +33,11 @@ const schema = z.object({
   notes: optional,
   adminNotes: optional,
   wantsFamilyListed: z.boolean(),
+  familyMinorsCount: z
+    .string()
+    .trim()
+    .transform((v) => (v === "" ? null : Number(v)))
+    .refine((v) => v === null || (Number.isInteger(v) && v >= 0 && v <= 50), "Family members under 18 must be a number from 0 to 50"),
   seekingChurchHome: z.boolean(),
 });
 
@@ -52,6 +57,7 @@ export async function updateVolunteerAction(volunteerId: number, _prev: SaveStat
     notes: get("notes"),
     adminNotes: get("adminNotes"),
     wantsFamilyListed: on("wantsFamilyListed"),
+    familyMinorsCount: get("familyMinorsCount"),
     seekingChurchHome: on("seekingChurchHome"),
   });
   if (!parsed.success) return { error: parsed.error.issues[0]?.message ?? "Check the form and try again." };
